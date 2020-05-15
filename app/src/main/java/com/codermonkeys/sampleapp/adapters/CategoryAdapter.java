@@ -1,5 +1,6 @@
 package com.codermonkeys.sampleapp.adapters;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.codermonkeys.sampleapp.CategoryActivity;
 import com.codermonkeys.sampleapp.R;
 import com.codermonkeys.sampleapp.models.CategoryModel;
 
@@ -37,7 +39,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         String icon = categoryModelList.get(position).getCategoryIconLink();
         String name = categoryModelList.get(position).getCategoryName();
 
-        holder.setCategoryName(name);
+        holder.setCategory(name, position);
     }
 
     @Override
@@ -45,7 +47,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         return categoryModelList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView categoryIcon;
         private TextView categoryName;
@@ -61,8 +63,22 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
             //todo:set category icons from web
         }
 
-        private void setCategoryName(String name) {
+        private void setCategory(final String name, final int position) {
             categoryName.setText(name);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    if(position != 0) {
+                        Intent categoryIntent = new Intent(itemView.getContext(), CategoryActivity.class);
+                        categoryIntent.putExtra("CategoryName", name);
+                        itemView.getContext().startActivity(categoryIntent);
+                    }
+
+
+                }
+            });
         }
     }
 }

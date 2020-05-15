@@ -1,89 +1,41 @@
-package com.codermonkeys.sampleapp.fragments;
+package com.codermonkeys.sampleapp;
 
-import android.annotation.SuppressLint;
-import android.graphics.Color;
-import android.os.Bundle;
-
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 
-import android.os.Handler;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
-import com.codermonkeys.sampleapp.R;
-import com.codermonkeys.sampleapp.adapters.CategoryAdapter;
-import com.codermonkeys.sampleapp.adapters.GridProductLayoutAdapter;
 import com.codermonkeys.sampleapp.adapters.HomePageAdapter;
-import com.codermonkeys.sampleapp.adapters.HorizontalProductScrollAdapter;
-import com.codermonkeys.sampleapp.adapters.SliderAdapter;
-import com.codermonkeys.sampleapp.models.CategoryModel;
 import com.codermonkeys.sampleapp.models.HomePageModel;
 import com.codermonkeys.sampleapp.models.HorizontalProductScrollModel;
 import com.codermonkeys.sampleapp.models.SliderModel;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.Objects;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class HomeFragment extends Fragment {
+public class CategoryActivity extends AppCompatActivity {
 
-    //Widget's
+    //Widget Component's
     private RecyclerView categoryRecyclerView;
-    private RecyclerView testing;
-
-
-    //var's
-    private CategoryAdapter categoryAdapter;
-    private List<CategoryModel> categoryModelList;
-
-    public HomeFragment() {
-        // Required empty public constructor
-    }
-
-
-    @SuppressLint("ClickableViewAccessibility")
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_category);
 
-        categoryRecyclerView = view.findViewById(R.id.category_recycler_view);
+        String title = getIntent().getStringExtra("CategoryName");
+        setTitle(title);
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        layoutManager.setOrientation(RecyclerView.HORIZONTAL);
-        categoryRecyclerView.setLayoutManager(layoutManager);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
-        categoryModelList = new ArrayList<>();
-        categoryModelList.add(new CategoryModel("Link", "Home"));
-        categoryModelList.add(new CategoryModel("Link", "Electronics"));
-        categoryModelList.add(new CategoryModel("Link", "Appliances"));
-        categoryModelList.add(new CategoryModel("Link", "Furniture"));
-        categoryModelList.add(new CategoryModel("Link", "Fashion"));
-        categoryModelList.add(new CategoryModel("Link", "Toys"));
-        categoryModelList.add(new CategoryModel("Link", "Sports"));
-        categoryModelList.add(new CategoryModel("Link", "Wall Arts"));
-        categoryModelList.add(new CategoryModel("Link", "Books"));
-        categoryModelList.add(new CategoryModel("Link", "Shoes"));
-
-
-        categoryAdapter = new CategoryAdapter(categoryModelList);
-        categoryRecyclerView.setAdapter(categoryAdapter);
-        categoryAdapter.notifyDataSetChanged();
+        categoryRecyclerView = findViewById(R.id.category_recycleview);
 
         /////////Banner Slider
 
@@ -125,10 +77,9 @@ public class HomeFragment extends Fragment {
 
 
         ///////////////MultiLay RecyclerView
-        testing = view.findViewById(R.id.home_page_recycler_view);
-        LinearLayoutManager testingLayoutManager = new LinearLayoutManager(getContext());
+        LinearLayoutManager testingLayoutManager = new LinearLayoutManager(this);
         testingLayoutManager.setOrientation(RecyclerView.VERTICAL);
-        testing.setLayoutManager(testingLayoutManager);
+        categoryRecyclerView.setLayoutManager(testingLayoutManager);
 
         List<HomePageModel> homePageModelList = new ArrayList<>();
         homePageModelList.add(new HomePageModel(0, sliderModelList));
@@ -138,19 +89,30 @@ public class HomeFragment extends Fragment {
         homePageModelList.add(new HomePageModel(1, R.drawable.mbl, "#000000"));
         homePageModelList.add(new HomePageModel(3,"Deals of the day", horizontalProductScrollModelList));
         homePageModelList.add(new HomePageModel(2,"Deals of the day", horizontalProductScrollModelList));
-        homePageModelList.add(new HomePageModel(0, sliderModelList));
-
 
         HomePageAdapter adapter = new HomePageAdapter(homePageModelList);
-        testing.setAdapter(adapter);
+        categoryRecyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
         ///////////////MultiLay RecyclerView
-
-        return view;
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.search_icon, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.main_search_icon) {
+            //Todo: search
+        } else if(item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
 
-
+        return super.onOptionsItemSelected(item);
+    }
 }
