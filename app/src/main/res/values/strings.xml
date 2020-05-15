@@ -30,4 +30,14 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="home_appliances">Home Appliances</string>
     <string name="home_icon">Home Icon</string>
+    <string name="sampleimage">SampleImage</string>
+    <string name="strip_ad">Strip Ad</string>
+    <string name="deals_of_the_day">Deals of the day</string>
+    <string name="customitemad">CustomItemAd</string>
+    <string name="redmi_5a">Redmi 5A</string>
+    <string name="sd_425_processor">SD 425 Processor</string>
+    <string name="from_rs_5999">From Rs.5999</string>
+    <string name="title">Title</string>
+    <string name="view_all">View All</string>
+    <string name="whiteColor">#ffffff</string>
 </resources>
