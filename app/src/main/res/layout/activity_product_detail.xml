@@ -25,9 +25,9 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
+        android:id="@+id/scroll_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:id="@+id/scroll_view"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -42,15 +42,17 @@
             android:orientation="vertical">
 
             <include layout="@layout/product_images_layout" />
-            <include layout="@layout/rewards_with_product_layout"/>
-            <include layout="@layout/product_description_layout"/>
-            <include layout="@layout/product_details_only_layout"/>
 
+            <include layout="@layout/rewards_with_product_layout" />
 
+            <include layout="@layout/product_description_layout" />
+
+            <include layout="@layout/product_details_only_layout" />
+
+            <include layout="@layout/ratings_layout" />
 
         </LinearLayout>
     </ScrollView>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

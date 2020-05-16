@@ -75,7 +75,6 @@ public class ProductSpecificationAdapter extends RecyclerView.Adapter<ProductSpe
                 break;
 
             default:
-                return;
         }
     }
 

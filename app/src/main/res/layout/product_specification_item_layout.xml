@@ -19,7 +19,7 @@
 
         <TextView
             android:id="@+id/feature_name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:layout_weight="1"
@@ -29,11 +29,10 @@
 
         <TextView
             android:id="@+id/feature_value"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="start"
+            android:textAlignment="viewStart"
             android:layout_weight="2"
-            android:layout_marginStart="4dp"
             android:text="@string/feature_value" />
     </LinearLayout>
 

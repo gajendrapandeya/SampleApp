@@ -7,5 +7,9 @@
     <color name="btnRed">#9f0000</color>
     <color name="hintColor">#70ffffff</color>
     <color name="colorGreen">#11A10c</color>
+    <color name="colorYellow">#ff0</color>
+    <color name="colorGrey">#b9b</color>
+    <color name="ligthGrey">#DAE0E2</color>
+    <color name="realYellow">#ffbb00</color>
 
 </resources>

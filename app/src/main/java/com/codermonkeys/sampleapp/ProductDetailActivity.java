@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.codermonkeys.sampleapp.adapters.ProductDetailsAdapter;
 import com.codermonkeys.sampleapp.adapters.ProductImagesAdapter;
@@ -33,6 +35,10 @@ public class ProductDetailActivity extends AppCompatActivity {
 
     //Var's
     private static boolean ALREADYADDEDTOWISHLIST = false;
+
+    /////Rating Star
+    private LinearLayout rateNowContainer;
+    /////Rating Star
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,7 +97,34 @@ public class ProductDetailActivity extends AppCompatActivity {
             }
         });
 
+
+        ///////Rating Star
+
+        for(int x = 0; x < rateNowContainer.getChildCount(); x++) {
+
+            final int starPosition = x;
+            rateNowContainer.getChildAt(x).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    setRating(starPosition);
+                }
+            });
+        }
+        ///////Rating Star
+
     }
+
+    ////////rating star
+    private void setRating(int starPosition) {
+        for(int x = 0; x < rateNowContainer.getChildCount(); x++) {
+            ImageView starBtn = (ImageView) rateNowContainer.getChildAt(x);
+            starBtn.setImageTintList(ColorStateList.valueOf(Color.parseColor("#bebebe")));
+            if(x <= starPosition) {
+                starBtn.setImageTintList(ColorStateList.valueOf(Color.parseColor("#ffbb00")));
+            }
+        }
+    }
+    ////////rating star
 
     private void initWidgets() {
         productImageViewPager = findViewById(R.id.product_images_viewpager);
@@ -99,6 +132,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         addToWishListBtn = findViewById(R.id.add_to_wish_list_button);
         productDetailsViewPager = findViewById(R.id.product_details_viewpager);
         productDetailsTabLayout = findViewById(R.id.product_detail_tab_layout);
+        rateNowContainer = findViewById(R.id.rate_now_container);
     }
 
     @Override
