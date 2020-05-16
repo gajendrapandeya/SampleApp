@@ -40,4 +40,13 @@
     <string name="title">Title</string>
     <string name="view_all">View All</string>
     <string name="whiteColor">#ffffff</string>
+    <string name="product_title">Product Title</string>
+    <string name="_4_5">4.5</string>
+    <string name="rating_image">Rating Image</string>
+    <string name="total_ratings">Total Ratings</string>
+    <string name="price">Rs.4,999/-</string>
+    <string name="cutted_price">Rs.5,999/-</string>
+    <string name="available">Available</string>
+    <string name="check_price_after_coupon_redemption">Check price after coupon redemption</string>
+    <string name="reedem">Reedem</string>
 </resources>
