@@ -49,4 +49,6 @@
     <string name="available">Available</string>
     <string name="check_price_after_coupon_redemption">Check price after coupon redemption</string>
     <string name="reedem">Reedem</string>
+    <string name="lorem_ipsum_dolor_sit_amet_eu_diam_scripta_facilis_usu_vimerat_persequeris_concludaturque_an_usu">Lorem ipsum dolor sit amet, eu diam scripta facilis usu. Vimerat persequeris concludaturque an, usu</string>
+    <string name="reward_image">Reward Image</string>
 </resources>
