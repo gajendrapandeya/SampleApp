@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.codermonkeys.sampleapp.adapters.ProductDetailsAdapter;
 import com.codermonkeys.sampleapp.adapters.ProductImagesAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
@@ -25,7 +26,12 @@ public class ProductDetailActivity extends AppCompatActivity {
     //Widget Component's
     private ViewPager productImageViewPager;
     private TabLayout viewPagerIndicator;
-    private FloatingActionButton addtoWishListBtn;
+    private FloatingActionButton addToWishListBtn;
+    private ViewPager productDetailsViewPager;
+    private TabLayout productDetailsTabLayout;
+
+
+    //Var's
     private static boolean ALREADYADDEDTOWISHLIST = false;
 
     @Override
@@ -38,9 +44,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        productImageViewPager = findViewById(R.id.product_images_viewpager);
-        viewPagerIndicator = findViewById(R.id.viewpager_indicator);
-        addtoWishListBtn = findViewById(R.id.add_to_wish_list_button);
+        initWidgets();
 
         List<Integer> productImages = new ArrayList<>();
         productImages.add(R.drawable.banner);
@@ -53,20 +57,48 @@ public class ProductDetailActivity extends AppCompatActivity {
         ProductImagesAdapter productImagesAdapter = new ProductImagesAdapter(productImages);
         productImageViewPager.setAdapter(productImagesAdapter);
 
-        addtoWishListBtn.setOnClickListener(new View.OnClickListener() {
+        addToWishListBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 if(ALREADYADDEDTOWISHLIST) {
                     ALREADYADDEDTOWISHLIST = false;
-                    addtoWishListBtn.setSupportImageTintList(ColorStateList.valueOf(Color.parseColor("#9c9c9c")));
+                    addToWishListBtn.setSupportImageTintList(ColorStateList.valueOf(Color.parseColor("#9c9c9c")));
                 } else {
                     ALREADYADDEDTOWISHLIST = true;
-                    addtoWishListBtn.setSupportImageTintList(getResources().getColorStateList(R.color.colorPrimary));
+                    addToWishListBtn.setSupportImageTintList(getResources().getColorStateList(R.color.colorPrimary));
                 }
             }
         });
 
+        productDetailsViewPager.setAdapter(new ProductDetailsAdapter(getSupportFragmentManager(), productDetailsTabLayout.getTabCount()));
+        productDetailsViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(productDetailsTabLayout));
+
+        productDetailsTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                productDetailsViewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+    }
+
+    private void initWidgets() {
+        productImageViewPager = findViewById(R.id.product_images_viewpager);
+        viewPagerIndicator = findViewById(R.id.viewpager_indicator);
+        addToWishListBtn = findViewById(R.id.add_to_wish_list_button);
+        productDetailsViewPager = findViewById(R.id.product_details_viewpager);
+        productDetailsTabLayout = findViewById(R.id.product_detail_tab_layout);
     }
 
     @Override

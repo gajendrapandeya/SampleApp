@@ -51,4 +51,10 @@
     <string name="reedem">Reedem</string>
     <string name="lorem_ipsum_dolor_sit_amet_eu_diam_scripta_facilis_usu_vimerat_persequeris_concludaturque_an_usu">Lorem ipsum dolor sit amet, eu diam scripta facilis usu. Vimerat persequeris concludaturque an, usu</string>
     <string name="reward_image">Reward Image</string>
+    <string name="description">Description</string>
+    <string name="specification">Specification</string>
+    <string name="other_details">Other Details</string>
+    <string name="dummy_text_in_description_fragment">Lorem ipsum dolor sit amet, eu diam scripta facilis usu. Vim erat persequeris concludaturque an, usu vidit nominati complectitur ex. Pri mundi albucius elaboraret id. Cu nam omnium audire necessitatibus. Id vel verear legimus dissentias, mea oratio petentium inciderint in. Ei ius populo similique, at mel brute petentium. Sit an vide integre, at harum blandit petentium usu, et mea eros alterum consulatu. Quot putant posidonium has ei, verear constituto sea ei. Deseruisse concludaturque mel ut. Alii senserit eum ne, est et graece tibique, civibus recusabo suscipiantur at vim.</string>
+    <string name="feature_name">Feature Name</string>
+    <string name="feature_value">Feature Value</string>
 </resources>
