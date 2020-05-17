@@ -1,5 +1,6 @@
 package com.codermonkeys.sampleapp.adapters;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -114,6 +115,7 @@ public class CartAdapter extends RecyclerView.Adapter {
             productQuantity = itemView.findViewById(R.id.product_quantity);
         }
 
+        @SuppressLint("SetTextI18n")
         private void setItemDetails(int resource, String title, int freeCoupensNo, String productPriceText, String cuttedPriceText, int offersAppliedNo) {
             productImage.setImageResource(resource);
             productTitle.setText(title);
@@ -122,9 +124,9 @@ public class CartAdapter extends RecyclerView.Adapter {
                 freeCoupenIcon.setVisibility(View.VISIBLE);
                 freeCoupens.setVisibility(View.VISIBLE);
                 if(freeCoupensNo == 1) {
-                    freeCoupens.setText("free" + freeCoupensNo + "Coupen");
+                    freeCoupens.setText("free " + freeCoupensNo + " Coupen");
                 } else {
-                    freeCoupens.setText("free" + freeCoupensNo + "Coupens");
+                    freeCoupens.setText("free " + freeCoupensNo + " Coupens");
                 }
             } else {
                 freeCoupenIcon.setVisibility(View.INVISIBLE);
@@ -136,7 +138,7 @@ public class CartAdapter extends RecyclerView.Adapter {
 
             if(offersAppliedNo > 0) {
                 offersApplied.setVisibility(View.VISIBLE);
-                offersApplied.setText(offersAppliedNo + "Offers Applied");
+                offersApplied.setText(offersAppliedNo + " Offers Applied");
             } else {
                 offersApplied.setVisibility(View.INVISIBLE);
             }

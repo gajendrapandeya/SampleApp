@@ -95,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_my_mall:
+                invalidateOptionsMenu();
                 setFragment(new HomeFragment(), HOME_FRAGMENT);
                 break;
 

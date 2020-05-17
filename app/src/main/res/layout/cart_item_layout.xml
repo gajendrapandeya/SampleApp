@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/colorAccent"
     android:elevation="3dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -35,19 +37,18 @@
         android:id="@+id/free_coupen_icon"
         android:layout_width="15dp"
         android:layout_height="15dp"
-        android:layout_marginTop="4dp"
+        android:contentDescription="@string/free_coupen_icon"
         android:tint="#8000FF"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_free_coupen"
         app:layout_constraintStart_toStartOf="@+id/product_title"
-        app:layout_constraintTop_toBottomOf="@+id/product_title"
-        app:srcCompat="@drawable/coupen"
-        android:contentDescription="@string/free_coupen_icon" />
+        app:layout_constraintTop_toTopOf="@+id/tv_free_coupen"
+        app:srcCompat="@drawable/coupen" />
 
     <TextView
         android:id="@+id/tv_free_coupen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="2dp"
         android:text="@string/free_2_coupens"
         android:textColor="#8000FF"
         android:textSize="12sp"
@@ -73,6 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:text="@string/rs_5_999"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/product_price"
         app:layout_constraintEnd_toStartOf="@+id/product_price" />
 
@@ -80,7 +82,7 @@
         android:id="@+id/price_cut_divider"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
+        android:background="@color/colorGrey"
         app:layout_constraintBottom_toBottomOf="@+id/cutted_price"
         app:layout_constraintEnd_toEndOf="@+id/cutted_price"
         app:layout_constraintHorizontal_bias="0.388"
