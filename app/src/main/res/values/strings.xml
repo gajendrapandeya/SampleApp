@@ -36,7 +36,7 @@
     <string name="customitemad">CustomItemAd</string>
     <string name="redmi_5a">Redmi 5A</string>
     <string name="sd_425_processor">SD 425 Processor</string>
-    <string name="from_rs_5999">From Rs.5999</string>
+    <string name="from_rs_5999">From Rs.5999/-</string>
     <string name="title">Title</string>
     <string name="view_all">View All</string>
     <string name="whiteColor">#ffffff</string>
@@ -69,4 +69,24 @@
     <string name="_12">12</string>
     <string name="_27">27</string>
     <string name="your_ratings">Your Ratings</string>
+    <string name="add_to_cart">ADD TO CART</string>
+    <string name="buy_now">BUY NOW</string>
+    <string name="rs_4_999">Rs.4,999/-</string>
+    <string name="total_amount">Total Amount</string>
+    <string name="Continue">Continue</string>
+    <string name="product_image">Product Image</string>
+    <string name="mi_a2_lite">Mi A2 Lite</string>
+    <string name="free_coupen_icon">Free Coupen Icon</string>
+    <string name="free_2_coupens">Free 2 coupens</string>
+    <string name="rs_5_999">Rs.5,999/-</string>
+    <string name="offers_applied">Offers Applied</string>
+    <string name="coupens_applied">Coupens Applied</string>
+    <string name="qty_1">Qty: 1</string>
+    <string name="remove_item">Remove Item</string>
+    <string name="price_details">PRICE DETAILS</string>
+    <string name="price_2_items">Price (2 items)</string>
+    <string name="delivery">Delivery</string>
+    <string name="free">Free</string>
+    <string name="rs_9999">Rs.9999-</string>
+    <string name="you_saved_rs_100_on_this_order">You saved Rs.1/- on this order</string>
 </resources>
