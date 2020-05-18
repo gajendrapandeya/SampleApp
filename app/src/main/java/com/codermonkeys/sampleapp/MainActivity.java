@@ -5,9 +5,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 
 import com.codermonkeys.sampleapp.fragments.HomeFragment;
 import com.codermonkeys.sampleapp.fragments.MyCartFragment;
+import com.codermonkeys.sampleapp.fragments.MyOrdersFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -32,12 +34,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     //Widget component's
     private DrawerLayout drawer;
     private FrameLayout frameLayout;
+    private ImageView actionBarLogo;
 
     //var's
    private NavigationView navigationView;
    public static final int HOME_FRAGMENT = 0;
    public static final int CART_FRAGMENT = 1;
-   private static int currentFragment;
+   public static final int ORDER_FRAGMENT = 2;
+   private static int currentFragment = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +49,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
 
         frameLayout = findViewById(R.id.main_frame_layout);
+        actionBarLogo = findViewById(R.id.actionbar_logo);
 
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
@@ -67,6 +71,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         if(currentFragment == HOME_FRAGMENT) {
+            Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
             getMenuInflater().inflate(R.menu.main, menu);
         }
         return true;
@@ -81,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             case R.id.main_cart_icon:
                 //todo: notification system
-                myCart();
+                gotoFragment("My Cart", new MyCartFragment(), CART_FRAGMENT);
                 break;
 
             case R.id.main_notification_icon:
@@ -95,18 +100,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_my_mall:
+                actionBarLogo.setVisibility(View.VISIBLE);
                 invalidateOptionsMenu();
                 setFragment(new HomeFragment(), HOME_FRAGMENT);
                 break;
 
             case R.id.nav_my_orders:
+                gotoFragment("My Orders", new MyOrdersFragment(), ORDER_FRAGMENT);
                 break;
 
             case R.id.nav_my_rewards:
                 break;
 
             case R.id.nav_my_cart:
-                myCart();
+                gotoFragment("My Cart", new MyCartFragment(), CART_FRAGMENT);
                 break;
 
             case R.id.nav_my_wishlist:
@@ -122,16 +129,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    private void myCart() {
+    private void gotoFragment(String title, Fragment fragment, int fragmentNo) {
+
+        actionBarLogo.setVisibility(View.GONE);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(true);
+        getSupportActionBar().setTitle(title);
         invalidateOptionsMenu();
-        setFragment(new MyCartFragment(), CART_FRAGMENT);
-        navigationView.getMenu().getItem(0).setChecked(true);
+        setFragment(fragment,fragmentNo);
+        if(fragmentNo == CART_FRAGMENT) {
+            navigationView.getMenu().getItem(3).setChecked(true);
+        }
+
     }
     private void setFragment(Fragment fragment, int fragmentNo) {
 
-        currentFragment = fragmentNo;
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(frameLayout.getId(), fragment);
-        fragmentTransaction.commit();
+        if(fragmentNo != currentFragment) {
+            currentFragment = fragmentNo;
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
+            fragmentTransaction.replace(frameLayout.getId(), fragment);
+            fragmentTransaction.commit();
+        }
     }
 }

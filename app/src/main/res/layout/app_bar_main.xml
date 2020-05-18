@@ -25,9 +25,10 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    android:id="@+id/actionbar_logo"
                     android:layout_width="140dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/ic_logo"
+                    android:src="@drawable/mall"
                     android:adjustViewBounds="true"
                     android:layout_centerVertical="true"
                     android:contentDescription="@string/logo_my_mall" />

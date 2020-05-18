@@ -89,4 +89,7 @@
     <string name="free">Free</string>
     <string name="rs_9999">Rs.9999-</string>
     <string name="you_saved_rs_100_on_this_order">You saved Rs.1/- on this order</string>
+    <string name="pixel_2">Pixel 2</string>
+    <string name="dot">Dot</string>
+    <string name="delivered_on_mon_15_jan_2017">Delivered On Mon,15 jan 2017</string>
 </resources>

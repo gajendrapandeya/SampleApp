@@ -164,13 +164,14 @@ public class CartAdapter extends RecyclerView.Adapter {
             savedAmount = itemView.findViewById(R.id.saved_amount);
         }
 
+        @SuppressLint("SetTextI18n")
         private void setTotalAmount(String totalItemText, String totalItemsPriceText, String deliveryPriceText, String totalAmountText, String savedAmountText) {
 
             totalItems.setText(totalItemText);
             totalItemsPrice.setText(totalItemsPriceText);
             deliveryPrice.setText(deliveryPriceText);
             totalAmount.setText(totalAmountText);
-            savedAmount.setText(savedAmountText);
+            savedAmount.setText("You will save " + savedAmountText + "on this order");
         }
     }
 }
