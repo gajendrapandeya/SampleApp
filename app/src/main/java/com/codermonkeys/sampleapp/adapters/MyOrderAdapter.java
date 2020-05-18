@@ -1,5 +1,6 @@
 package com.codermonkeys.sampleapp.adapters;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.codermonkeys.sampleapp.OrderDetailActivity;
 import com.codermonkeys.sampleapp.R;
 import com.codermonkeys.sampleapp.models.MyOrderItemModel;
 
@@ -58,7 +60,7 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.ViewHold
         private TextView deliveryStatus;
         private LinearLayout rateNowContainer;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull final View itemView) {
             super(itemView);
 
             productImage = itemView.findViewById(R.id.product_image);
@@ -66,6 +68,14 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.ViewHold
             orderIndicator = itemView.findViewById(R.id.order_indicator);
             deliveryStatus = itemView.findViewById(R.id.order_delivered_date);
             rateNowContainer = itemView.findViewById(R.id.rate_now_container);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent orderDetailsIntent = new Intent(itemView.getContext(), OrderDetailActivity.class);
+                    itemView.getContext().startActivity(orderDetailsIntent);
+                }
+            });
         }
 
         private void setData(int resource, String title, String deliveredDate, int rating) {

@@ -92,4 +92,25 @@
     <string name="pixel_2">Pixel 2</string>
     <string name="dot">Dot</string>
     <string name="delivered_on_mon_15_jan_2017">Delivered On Mon,15 jan 2017</string>
+    <string name="pixel_2a">Pixel 2a</string>
+    <string name="selecteddot">SelectedDot</string>
+    <string name="ordered">Ordered</string>
+    <string name="mon_12th_dec_2015_7_00_a_m">Mon, 12th Dec 2015 -7:00 A.M</string>
+    <string name="your_order_has_been_placed">Your Order has been placed</string>
+    <string name="packed">Packed</string>
+    <string name="shipping">Shipping</string>
+    <string name="your_order_has_been_packed">Your Order has been packed</string>
+    <string name="your_order_has_been_shipped">Your Order has been shipped</string>
+    <string name="delivered">Delivered</string>
+    <string name="your_order_has_been_delivered">Your order has been delivered</string>
+    <string name="shipping_details">SHIPPING DETAILS</string>
+    <string name="john_doe">John Doe</string>
+    <string name="dhangadhi_kailali">Dhangadhi, Kailali</string>
+    <string name="pin_code">Pin Code</string>
+    <string name="happy">Happy shopping</string>
+    <string name="free_coupen">free coupen</string>
+    <string name="_22">(22)</string>
+    <string name="_22_ratings">(22)ratings</string>
+    <string name="cash_on_delivery_available">Cash on delivery available</string>
+    <string name="delete">Delete</string>
 </resources>

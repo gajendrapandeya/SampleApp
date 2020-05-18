@@ -10,8 +10,7 @@ import android.widget.ImageView;
 import com.codermonkeys.sampleapp.fragments.HomeFragment;
 import com.codermonkeys.sampleapp.fragments.MyCartFragment;
 import com.codermonkeys.sampleapp.fragments.MyOrdersFragment;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import com.codermonkeys.sampleapp.fragments.MyWishListFragment;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
@@ -19,10 +18,6 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -41,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
    public static final int HOME_FRAGMENT = 0;
    public static final int CART_FRAGMENT = 1;
    public static final int ORDER_FRAGMENT = 2;
+   public static final int WISH_LIST_FRAGMENT = 3;
    private static int currentFragment = -1;
 
     @Override
@@ -117,6 +113,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.nav_my_wishlist:
+                gotoFragment("My WishList", new MyWishListFragment(), WISH_LIST_FRAGMENT);
                 break;
 
             case R.id.nav_my_profile:
@@ -149,6 +146,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             fragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
             fragmentTransaction.replace(frameLayout.getId(), fragment);
             fragmentTransaction.commit();
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            if(currentFragment == HOME_FRAGMENT) {
+                super.onBackPressed();
+            } else {
+                actionBarLogo.setVisibility(View.VISIBLE);
+                invalidateOptionsMenu();
+                setFragment(new HomeFragment(), HOME_FRAGMENT);
+                navigationView.getMenu().getItem(0).setChecked(true);
+            }
         }
     }
 }

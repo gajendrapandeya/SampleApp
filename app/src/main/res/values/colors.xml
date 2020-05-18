@@ -12,5 +12,6 @@
     <color name="ligthGrey">#DAE0E2</color>
     <color name="realYellow">#ffbb00</color>
     <color name="recycler_view_background">#d6d6d6</color>
+    <color name="colorCoupen">#8000FF</color>
 
 </resources>
