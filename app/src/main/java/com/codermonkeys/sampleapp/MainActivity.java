@@ -1,15 +1,20 @@
 package com.codermonkeys.sampleapp;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.codermonkeys.sampleapp.fragments.HomeFragment;
+import com.codermonkeys.sampleapp.fragments.MyAccountFragment;
 import com.codermonkeys.sampleapp.fragments.MyCartFragment;
 import com.codermonkeys.sampleapp.fragments.MyOrdersFragment;
+import com.codermonkeys.sampleapp.fragments.MyRewardsFragment;
 import com.codermonkeys.sampleapp.fragments.MyWishListFragment;
 import com.google.android.material.navigation.NavigationView;
 
@@ -30,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawer;
     private FrameLayout frameLayout;
     private ImageView actionBarLogo;
+    private Toolbar toolbar;
 
     //var's
    private NavigationView navigationView;
@@ -37,14 +43,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
    public static final int CART_FRAGMENT = 1;
    public static final int ORDER_FRAGMENT = 2;
    public static final int WISH_LIST_FRAGMENT = 3;
+   public static final int REWARDS_FRAGMENT = 4;
+   public static final int ACCOUNT_FRAGMENT = 5;
    private static int currentFragment = -1;
+   private Window window;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        window = getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
         frameLayout = findViewById(R.id.main_frame_layout);
         actionBarLogo = findViewById(R.id.actionbar_logo);
@@ -106,6 +117,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.nav_my_rewards:
+                gotoFragment("My Rewards", new MyRewardsFragment(), REWARDS_FRAGMENT);
                 break;
 
             case R.id.nav_my_cart:
@@ -117,6 +129,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.nav_my_profile:
+                gotoFragment("My Account", new MyAccountFragment(), ACCOUNT_FRAGMENT);
                 break;
 
             case R.id.nav_sign_out:
@@ -141,6 +154,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void setFragment(Fragment fragment, int fragmentNo) {
 
         if(fragmentNo != currentFragment) {
+
+            if(fragmentNo == REWARDS_FRAGMENT) {
+                window.setStatusBarColor(getResources().getColor(R.color.colorViolet));
+                toolbar.setBackgroundColor(getResources().getColor(R.color.colorViolet));
+
+            } else {
+                window.setStatusBarColor(getResources().getColor(R.color.colorPrimary));
+                toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            }
+
             currentFragment = fragmentNo;
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
@@ -164,4 +187,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         }
     }
+
+
 }

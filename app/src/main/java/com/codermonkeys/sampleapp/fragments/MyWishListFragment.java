@@ -35,6 +35,8 @@ public class MyWishListFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_my_wish_list, container, false);
 
+        getActivity().setTitle("My WishList");
+
         wishListRecyclerView = view.findViewById(R.id.my_wishlist_recyclerview);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext());

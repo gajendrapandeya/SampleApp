@@ -1,5 +1,6 @@
 package com.codermonkeys.sampleapp.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,12 +10,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.codermonkeys.sampleapp.MainActivity;
 import com.codermonkeys.sampleapp.R;
 import com.codermonkeys.sampleapp.adapters.CartAdapter;
 import com.codermonkeys.sampleapp.models.CartItemModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -52,4 +55,6 @@ public class MyCartFragment extends Fragment {
         cartItemRecyclerView.setAdapter(cartAdapter);
         return view;
     }
+
+
 }

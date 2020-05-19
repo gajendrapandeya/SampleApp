@@ -74,7 +74,7 @@ public class WishListAdapter  extends RecyclerView.Adapter<WishListAdapter.ViewH
             productImage = itemView.findViewById(R.id.product_image);
             productTitle = itemView.findViewById(R.id.product_title);
             freeCoupens = itemView.findViewById(R.id.free_coupens);
-            coupenIcon = itemView.findViewById(R.id.free_coupen_imageview);
+            coupenIcon = itemView.findViewById(R.id.coupen_icon);
             cuttedPrice = itemView.findViewById(R.id.cutted_price);
             paymentMethod = itemView.findViewById(R.id.payment_method);
             rating = itemView.findViewById(R.id.tv_product_rating_miniview);
