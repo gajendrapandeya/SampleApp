@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">#CE0000</color>
+    <color name="colorPrimaryDark">#CE0000</color>
+    <color name="colorAccent">#ffffff</color>
+
+    <color name="btnRed">#9f0000</color>
+    <color name="hintColor">#70ffffff</color>
+    <color name="colorGreen">#11A10c</color>
+    <color name="colorYellow">#ff0</color>
+    <color name="colorGrey">#b9b</color>
+    <color name="cartColor">#777E8B</color>
+    <color name="ligthGrey">#DAE0E2</color>
+    <color name="realYellow">#ffbb00</color>
+    <color name="recycler_view_background">#d6d6d6</color>
+    <color name="colorCoupen">#8000FF</color>
+    <color name="colorViolet">#5B04B1</color>
+
 </resources>
