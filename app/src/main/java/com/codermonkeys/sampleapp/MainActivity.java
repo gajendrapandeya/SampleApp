@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(0).setChecked(true);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("My mall");
+        getSupportActionBar().setTitle("My Mall");
 
         if (showCart) {
 
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         if (currentFragment == HOME_FRAGMENT) {
-            Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
+            Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(true);
             getMenuInflater().inflate(R.menu.main, menu);
         }
         return true;
@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (item.getItemId()) {
             case R.id.nav_my_mall:
                 invalidateOptionsMenu();
-                gotoFragment("My Mall", new HomeFragment(), ORDER_FRAGMENT);
+                gotoFragment("My Mall", new HomeFragment(), HOME_FRAGMENT);
                 break;
 
             case R.id.nav_my_orders:
@@ -155,10 +155,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void gotoFragment(String title, Fragment fragment, int fragmentNo) {
-
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(true);
         getSupportActionBar().setTitle(title);
-        invalidateOptionsMenu();
+        if (!title.equals("My Mall"))
+            invalidateOptionsMenu();
         setFragment(fragment, fragmentNo);
         if (fragmentNo == CART_FRAGMENT) {
             navigationView.getMenu().getItem(3).setChecked(true);
