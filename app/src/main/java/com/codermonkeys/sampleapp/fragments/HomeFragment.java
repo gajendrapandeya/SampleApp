@@ -120,6 +120,7 @@ public class HomeFragment extends Fragment {
         horizontalProductScrollModelList.add(new HorizontalProductScrollModel(R.drawable.windows, "Windows", "SD 625 Processor", "Rs.5,999"));
         horizontalProductScrollModelList.add(new HorizontalProductScrollModel(R.drawable.a2, "Mi A2", "SD 625 Processor", "Rs.5,999"));
         horizontalProductScrollModelList.add(new HorizontalProductScrollModel(R.drawable.mbl, "Redmi Note 5A", "SD 625 Processor", "Rs.5,999"));
+        horizontalProductScrollModelList.add(new HorizontalProductScrollModel(R.drawable.mbl, "Redmi Note 5A", "SD 625 Processor", "Rs.5,999"));
 
         /////Horizontal Product Layout
 
@@ -138,7 +139,14 @@ public class HomeFragment extends Fragment {
         homePageModelList.add(new HomePageModel(1, R.drawable.mbl, "#000000"));
         homePageModelList.add(new HomePageModel(3,"Deals of the day", horizontalProductScrollModelList));
         homePageModelList.add(new HomePageModel(2,"Deals of the day", horizontalProductScrollModelList));
-        homePageModelList.add(new HomePageModel(0, sliderModelList));
+        homePageModelList.add(new HomePageModel(1, R.drawable.mbl, "#000000"));
+        homePageModelList.add(new HomePageModel(2,"Deals of the day", horizontalProductScrollModelList));
+        homePageModelList.add(new HomePageModel(3,"Deals of the day", horizontalProductScrollModelList));
+        homePageModelList.add(new HomePageModel(1, R.drawable.mbl, "#000000"));
+        homePageModelList.add(new HomePageModel(3,"Deals of the day", horizontalProductScrollModelList));
+        homePageModelList.add(new HomePageModel(2,"Deals of the day", horizontalProductScrollModelList));
+
+
 
 
         HomePageAdapter adapter = new HomePageAdapter(homePageModelList);
