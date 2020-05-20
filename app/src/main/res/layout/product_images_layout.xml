@@ -141,7 +141,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/cutted_price"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/product_images_viewpager"
-        app:srcCompat="@drawable/cod_indicator" />
+        app:srcCompat="@drawable/cod_indicator"
+        android:contentDescription="@string/cod" />
 
     <TextView
         android:id="@+id/cod_indicator_text_view"

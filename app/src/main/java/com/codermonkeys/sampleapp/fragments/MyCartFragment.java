@@ -1,15 +1,19 @@
 package com.codermonkeys.sampleapp.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.codermonkeys.sampleapp.AddAddressActivity;
+import com.codermonkeys.sampleapp.DeliveryActivity;
 import com.codermonkeys.sampleapp.MainActivity;
 import com.codermonkeys.sampleapp.R;
 import com.codermonkeys.sampleapp.adapters.CartAdapter;
@@ -26,6 +30,7 @@ public class MyCartFragment extends Fragment {
 
     //Widget's Component's
     private RecyclerView cartItemRecyclerView;
+    private Button continueBtn;
 
     public MyCartFragment() {
         // Required empty public constructor
@@ -39,6 +44,7 @@ public class MyCartFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_my_cart, container, false);
 
         cartItemRecyclerView = view.findViewById(R.id.cart_item_recyclerview);
+        continueBtn = view.findViewById(R.id.cart_continue_btn);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext());
         layoutManager.setOrientation(RecyclerView.VERTICAL);
@@ -53,6 +59,14 @@ public class MyCartFragment extends Fragment {
 
         CartAdapter cartAdapter = new CartAdapter(cartItemModelList);
         cartItemRecyclerView.setAdapter(cartAdapter);
+
+        continueBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent addAddressIntent = new Intent(getContext(), AddAddressActivity.class);
+                requireContext().startActivity(addAddressIntent);
+            }
+        });
         return view;
     }
 

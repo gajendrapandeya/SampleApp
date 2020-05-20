@@ -123,4 +123,17 @@
     <string name="address">Address</string>
     <string name="pin_code">Pin Code</string>
     <string name="full_name">Full Name</string>
+    <string name="change_or_add_a_new_address">Change or Add a new address</string>
+    <string name="cod">cod</string>
+    <string name="address_icon">Address Icon</string>
+    <string name="city">City*</string>
+    <string name="locality_area_or_street">Locality,area or street*</string>
+    <string name="flat_no_building_name">Flat no, Building name*</string>
+    <string name="_hint_code">Pin Code*</string>
+    <string name="state">state*</string>
+    <string name="landmark_optional">Landmark(optional)</string>
+    <string name="name">Name*</string>
+    <string name="mobile_no">Mobile no.*</string>
+    <string name="alternate_mobile_no_optional">Alternate Mobile no.(optional)</string>
+    <string name="save">Save</string>
 </resources>
