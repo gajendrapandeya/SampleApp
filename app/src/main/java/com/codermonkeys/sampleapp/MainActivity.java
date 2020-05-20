@@ -35,20 +35,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     //Widget component's
     private DrawerLayout drawer;
     private FrameLayout frameLayout;
-    private ImageView actionBarLogo;
     private Toolbar toolbar;
 
     //var's
-   private NavigationView navigationView;
-   public static final int HOME_FRAGMENT = 0;
-   public static final int CART_FRAGMENT = 1;
-   public static final int ORDER_FRAGMENT = 2;
-   public static final int WISH_LIST_FRAGMENT = 3;
-   public static final int REWARDS_FRAGMENT = 4;
-   public static final int ACCOUNT_FRAGMENT = 5;
-   private int currentFragment = -1;
-   private Window window;
-   public static Boolean showCart = false;
+    private NavigationView navigationView;
+    public static final int HOME_FRAGMENT = 0;
+    public static final int CART_FRAGMENT = 1;
+    public static final int ORDER_FRAGMENT = 2;
+    public static final int WISH_LIST_FRAGMENT = 3;
+    public static final int REWARDS_FRAGMENT = 4;
+    public static final int ACCOUNT_FRAGMENT = 5;
+    private int currentFragment = -1;
+    private Window window;
+    public static Boolean showCart = false;
 
     @SuppressLint("WrongConstant")
     @Override
@@ -61,20 +60,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
         frameLayout = findViewById(R.id.main_frame_layout);
-        actionBarLogo = findViewById(R.id.actionbar_logo);
 
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(0).setChecked(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("My mall");
 
-        if(showCart) {
+        if (showCart) {
 
             drawer.setDrawerLockMode(1);
             Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
             gotoFragment("My Cart", new MyCartFragment(), -2);
         } else {
-            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,R.string.open_drawer,R.string.close_drawer);
+            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.open_drawer, R.string.close_drawer);
             drawer.setDrawerListener(toggle);
             toggle.syncState();
             setFragment(new HomeFragment(), HOME_FRAGMENT);
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        if(currentFragment == HOME_FRAGMENT) {
+        if (currentFragment == HOME_FRAGMENT) {
             Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
             getMenuInflater().inflate(R.menu.main, menu);
         }
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
             case android.R.id.home:
-                if(showCart) {
+                if (showCart) {
                     showCart = false;
                     finish();
                     return true;
@@ -123,9 +123,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_my_mall:
-                actionBarLogo.setVisibility(View.VISIBLE);
                 invalidateOptionsMenu();
-                setFragment(new HomeFragment(), HOME_FRAGMENT);
+                gotoFragment("My Mall", new HomeFragment(), ORDER_FRAGMENT);
                 break;
 
             case R.id.nav_my_orders:
@@ -157,21 +156,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void gotoFragment(String title, Fragment fragment, int fragmentNo) {
 
-        actionBarLogo.setVisibility(View.GONE);
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(true);
         getSupportActionBar().setTitle(title);
         invalidateOptionsMenu();
-        setFragment(fragment,fragmentNo);
-        if(fragmentNo == CART_FRAGMENT) {
+        setFragment(fragment, fragmentNo);
+        if (fragmentNo == CART_FRAGMENT) {
             navigationView.getMenu().getItem(3).setChecked(true);
         }
 
     }
+
     private void setFragment(Fragment fragment, int fragmentNo) {
 
-        if(fragmentNo != currentFragment) {
+        if (fragmentNo != currentFragment) {
 
-            if(fragmentNo == REWARDS_FRAGMENT) {
+            if (fragmentNo == REWARDS_FRAGMENT) {
                 window.setStatusBarColor(getResources().getColor(R.color.colorViolet));
                 toolbar.setBackgroundColor(getResources().getColor(R.color.colorViolet));
 
@@ -190,19 +189,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-        if(drawer.isDrawerOpen(GravityCompat.START)) {
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            if(currentFragment == HOME_FRAGMENT) {
+            if (currentFragment == HOME_FRAGMENT) {
                 currentFragment = -1;
                 super.onBackPressed();
             } else {
-                if(showCart) {
+                if (showCart) {
 
                     showCart = false;
                     finish();
                 } else {
-                    actionBarLogo.setVisibility(View.VISIBLE);
                     invalidateOptionsMenu();
                     setFragment(new HomeFragment(), HOME_FRAGMENT);
                     navigationView.getMenu().getItem(0).setChecked(true);

@@ -49,11 +49,12 @@ public class MyCartFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext());
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         cartItemRecyclerView.setLayoutManager(layoutManager);
-
+        getActivity().setTitle("My Cart");
+//        getActivity().getSu().setTitle("My Cart");
         List<CartItemModel> cartItemModelList = new ArrayList<>();
-        cartItemModelList.add(new CartItemModel(0, R.drawable.product_image, 2, 1, "Google Pixel 3a(Black)", "Rs.9,000/-", "Rs.10,000/-" , 0, 0));
-        cartItemModelList.add(new CartItemModel(0, R.drawable.product_image, 2, 1, "Google Pixel 3a(Black)", "Rs.9,000/-", "Rs.10,000/-" , 0, 0));
-        cartItemModelList.add(new CartItemModel(0, R.drawable.product_image, 2, 1, "Google Pixel 3a(Black)", "Rs.9,000/-", "Rs.10,000/-" , 0, 0));
+        cartItemModelList.add(new CartItemModel(0, R.drawable.product_image, 2, 1, "Google Pixel 3a(Black)", "Rs.9,000/-", "Rs.10,000/-", 0, 0));
+        cartItemModelList.add(new CartItemModel(0, R.drawable.product_image, 2, 1, "Google Pixel 3a(Black)", "Rs.9,000/-", "Rs.10,000/-", 0, 0));
+        cartItemModelList.add(new CartItemModel(0, R.drawable.product_image, 2, 1, "Google Pixel 3a(Black)", "Rs.9,000/-", "Rs.10,000/-", 0, 0));
 
         cartItemModelList.add(new CartItemModel(1, "Price (3 items)", "Rs.15,999/-", "150/-", "Rs.16,999/-", "Rs.1000/-"));
 

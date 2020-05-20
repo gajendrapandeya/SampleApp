@@ -6,20 +6,6 @@
     android:orientation="vertical"
     tools:context=".fragments.MyRewardsFragment">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/lytToolBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:background="@color/colorPrimary"
-            android:orientation="vertical" />
-    </com.google.android.material.appbar.AppBarLayout>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/my_rewards_recycler_view"
         android:layout_width="match_parent"

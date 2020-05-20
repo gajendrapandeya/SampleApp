@@ -20,20 +20,6 @@
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/actionbar_logo"
-                    android:layout_width="140dp"
-                    android:layout_height="100dp"
-                    android:layout_centerVertical="true"
-                    android:adjustViewBounds="true"
-                    android:contentDescription="@string/logo_my_mall"
-                    android:src="@drawable/ic_logo" />
-
-            </RelativeLayout>
 
         </androidx.appcompat.widget.Toolbar>
 

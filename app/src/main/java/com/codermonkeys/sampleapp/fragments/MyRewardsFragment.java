@@ -5,9 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,7 +20,6 @@ import java.util.List;
 public class MyRewardsFragment extends Fragment {
 
     private RecyclerView rewardsRecyclerView;
-    private Toolbar toolbar;
     private View mainView;
 
     public MyRewardsFragment() {
@@ -39,8 +35,9 @@ public class MyRewardsFragment extends Fragment {
 
 
         rewardsRecyclerView = mainView.findViewById(R.id.my_rewards_recycler_view);
-        toolbar = mainView.findViewById(R.id.toolbar);
-        initToolbar();
+
+        getActivity().setTitle("My Reward");
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(mainView.getContext());
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         rewardsRecyclerView.setLayoutManager(layoutManager);
@@ -59,15 +56,5 @@ public class MyRewardsFragment extends Fragment {
         myRewardsAdapter.notifyDataSetChanged();
 
         return mainView;
-    }
-
-    private void initToolbar() {
-        toolbar = mainView.findViewById(R.id.toolbar);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-        actionBar.setTitle("Login Page");
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setDisplayShowTitleEnabled(true);
-
     }
 }
