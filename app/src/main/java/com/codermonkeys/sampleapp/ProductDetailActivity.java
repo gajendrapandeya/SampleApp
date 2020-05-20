@@ -25,6 +25,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import static com.codermonkeys.sampleapp.MainActivity.showCart;
+
 public class ProductDetailActivity extends AppCompatActivity {
 
     //Widget Component's
@@ -162,7 +164,9 @@ public class ProductDetailActivity extends AppCompatActivity {
                 break;
 
             case R.id.main_cart_icon:
-                //todo: cart system
+                Intent cartIntent = new Intent(ProductDetailActivity.this, MainActivity.class);
+                showCart = true;
+                startActivity(cartIntent);
                 break;
 
             case android.R.id.home:

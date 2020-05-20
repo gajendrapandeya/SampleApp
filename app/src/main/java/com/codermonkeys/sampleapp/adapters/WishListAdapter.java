@@ -1,6 +1,7 @@
 package com.codermonkeys.sampleapp.adapters;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.codermonkeys.sampleapp.ProductDetailActivity;
 import com.codermonkeys.sampleapp.R;
 import com.codermonkeys.sampleapp.models.WishListModel;
 
@@ -20,9 +22,11 @@ import java.util.List;
 public class WishListAdapter  extends RecyclerView.Adapter<WishListAdapter.ViewHolder> {
 
     private List<WishListModel> wishListModelList;
+    private Boolean wishList;
 
-    public WishListAdapter(List<WishListModel> wishListModelList) {
+    public WishListAdapter(List<WishListModel> wishListModelList, Boolean wishList) {
         this.wishListModelList = wishListModelList;
+        this.wishList = wishList;
     }
 
     @NonNull
@@ -54,7 +58,7 @@ public class WishListAdapter  extends RecyclerView.Adapter<WishListAdapter.ViewH
         return wishListModelList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public  class ViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView productImage;
         private TextView productTitle;
@@ -107,10 +111,23 @@ public class WishListAdapter  extends RecyclerView.Adapter<WishListAdapter.ViewH
             cuttedPrice.setText(cuttedPriceValue);
             paymentMethod.setText(payMethod);
 
+            if(wishList) {
+                deleteBtn.setVisibility(View.VISIBLE);
+            } else {
+                deleteBtn.setVisibility(View.GONE);
+            }
             deleteBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(itemView.getContext(), "Item Deleted Successfully", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent productDetailIntent = new Intent(itemView.getContext(), ProductDetailActivity.class);
+                    itemView.getContext().startActivity(productDetailIntent);
                 }
             });
         }

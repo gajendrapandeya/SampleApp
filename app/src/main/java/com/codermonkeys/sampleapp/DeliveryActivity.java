@@ -1,5 +1,6 @@
 package com.codermonkeys.sampleapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,6 +24,9 @@ public class DeliveryActivity extends AppCompatActivity {
     //Ui component's
     private RecyclerView deliveryRecyclerView;
     private Button changeOrAddNewAddressButton;
+
+    //var's
+    public static final int SELECT_ADDRESS = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +57,14 @@ public class DeliveryActivity extends AppCompatActivity {
         deliveryRecyclerView.setAdapter(cartAdapter);
 
         changeOrAddNewAddressButton.setVisibility(View.VISIBLE);
+        changeOrAddNewAddressButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myAddressIntent = new Intent(DeliveryActivity.this, MyAddressActivity.class);
+                myAddressIntent.putExtra("MODE", SELECT_ADDRESS);
+                startActivity(myAddressIntent);
+            }
+        });
     }
 
     @Override

@@ -89,10 +89,7 @@ public class HomeFragment extends Fragment {
 
         List<SliderModel> sliderModelList = new ArrayList<SliderModel>();
 
-        sliderModelList.add(new SliderModel(R.drawable.ic_sign_out));
-        sliderModelList.add(new SliderModel(R.drawable.ic_mall));
         sliderModelList.add(new SliderModel(R.drawable.banner));
-
         sliderModelList.add(new SliderModel(R.drawable.ic_logo));
         sliderModelList.add(new SliderModel(R.drawable.ic_account));
         sliderModelList.add(new SliderModel(R.drawable.ic_cart));
@@ -102,10 +99,7 @@ public class HomeFragment extends Fragment {
         sliderModelList.add(new SliderModel(R.drawable.ic_profile));
         sliderModelList.add(new SliderModel(R.drawable.ic_rewards));
         sliderModelList.add(new SliderModel(R.drawable.ic_sign_out));
-
         sliderModelList.add(new SliderModel(R.drawable.ic_mall));
-        sliderModelList.add(new SliderModel(R.drawable.banner));
-        sliderModelList.add(new SliderModel(R.drawable.ic_logo));
 
         ///////Banner Slider
 
@@ -119,6 +113,7 @@ public class HomeFragment extends Fragment {
         horizontalProductScrollModelList.add(new HorizontalProductScrollModel(R.drawable.htc, "HTC", "SD 625 Processor", "Rs.5,999"));
         horizontalProductScrollModelList.add(new HorizontalProductScrollModel(R.drawable.windows, "Windows", "SD 625 Processor", "Rs.5,999"));
         horizontalProductScrollModelList.add(new HorizontalProductScrollModel(R.drawable.a2, "Mi A2", "SD 625 Processor", "Rs.5,999"));
+        horizontalProductScrollModelList.add(new HorizontalProductScrollModel(R.drawable.mbl, "Redmi Note 5A", "SD 625 Processor", "Rs.5,999"));
         horizontalProductScrollModelList.add(new HorizontalProductScrollModel(R.drawable.mbl, "Redmi Note 5A", "SD 625 Processor", "Rs.5,999"));
 
         /////Horizontal Product Layout
@@ -138,7 +133,14 @@ public class HomeFragment extends Fragment {
         homePageModelList.add(new HomePageModel(1, R.drawable.mbl, "#000000"));
         homePageModelList.add(new HomePageModel(3,"Deals of the day", horizontalProductScrollModelList));
         homePageModelList.add(new HomePageModel(2,"Deals of the day", horizontalProductScrollModelList));
-        homePageModelList.add(new HomePageModel(0, sliderModelList));
+        homePageModelList.add(new HomePageModel(1, R.drawable.mbl, "#000000"));
+        homePageModelList.add(new HomePageModel(2,"Deals of the day", horizontalProductScrollModelList));
+        homePageModelList.add(new HomePageModel(3,"Deals of the day", horizontalProductScrollModelList));
+        homePageModelList.add(new HomePageModel(1, R.drawable.mbl, "#000000"));
+        homePageModelList.add(new HomePageModel(3,"Deals of the day", horizontalProductScrollModelList));
+        homePageModelList.add(new HomePageModel(2,"Deals of the day", horizontalProductScrollModelList));
+
+
 
 
         HomePageAdapter adapter = new HomePageAdapter(homePageModelList);

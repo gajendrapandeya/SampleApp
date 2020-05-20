@@ -136,4 +136,10 @@
     <string name="mobile_no">Mobile no.*</string>
     <string name="alternate_mobile_no_optional">Alternate Mobile no.(optional)</string>
     <string name="save">Save</string>
+    <string name="add_a_new_address">Add a new address</string>
+    <string name="_2_addresses_saved">2 addresses saved</string>
+    <string name="deliver_here">Deliver Here</string>
+    <string name="check_mark">Check Mark</string>
+    <string name="edit">Edit</string>
+    <string name="remove">Remove</string>
 </resources>
