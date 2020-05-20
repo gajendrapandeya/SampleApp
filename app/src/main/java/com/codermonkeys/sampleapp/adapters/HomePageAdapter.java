@@ -27,6 +27,7 @@ import com.codermonkeys.sampleapp.models.HomePageModel;
 import com.codermonkeys.sampleapp.models.HorizontalProductScrollModel;
 import com.codermonkeys.sampleapp.models.SliderModel;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -126,10 +127,11 @@ public class HomePageAdapter extends RecyclerView.Adapter {
 
         private ViewPager bannerSliderViewPager;
         private SliderAdapter sliderAdapter;
-        private int currentPage = 2;
+        private int currentPage;
         private Timer timer;
         private final long DELAY_TIME = 3000;
         private final long PERIOD_TIME = 3000;
+        private List<SliderModel> arrangedList;
 
         public BannerSliderViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -141,8 +143,22 @@ public class HomePageAdapter extends RecyclerView.Adapter {
         @SuppressLint("ClickableViewAccessibility")
         private void setBannerSliderViewPager(final List<SliderModel> sliderModelList) {
 
+            currentPage = 2;
+            if(timer != null) {
+                timer.cancel();
+            }
 
-            sliderAdapter = new SliderAdapter(sliderModelList);
+            arrangedList = new ArrayList<>();
+            for(int x = 0; x < sliderModelList.size(); x++) {
+                arrangedList.add(x, sliderModelList.get(x));
+            }
+
+            arrangedList.add(0, sliderModelList.get(sliderModelList.size() - 2) );
+            arrangedList.add(0, sliderModelList.get(sliderModelList.size() - 1) );
+            arrangedList.add(sliderModelList.get(0));
+            arrangedList.add(sliderModelList.get(1));
+
+            sliderAdapter = new SliderAdapter(arrangedList);
             bannerSliderViewPager.setAdapter(sliderAdapter);
             bannerSliderViewPager.setClipToPadding(false);
             bannerSliderViewPager.setPageMargin(20);
@@ -164,22 +180,22 @@ public class HomePageAdapter extends RecyclerView.Adapter {
                 public void onPageScrollStateChanged(int state) {
 
                     if (state == ViewPager.SCROLL_STATE_IDLE) {
-                        pageLooper(sliderModelList);
+                        pageLooper(arrangedList);
                     }
                 }
             };
 
             bannerSliderViewPager.addOnPageChangeListener(onPageChangeListener);
 
-            startBannerSlideShow(sliderModelList);
+            startBannerSlideShow(arrangedList);
 
             bannerSliderViewPager.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
-                    pageLooper(sliderModelList);
+                    pageLooper(arrangedList);
                     stopBannerSlideShow();
                     if (event.getAction() == MotionEvent.ACTION_UP) {
-                        startBannerSlideShow(sliderModelList);
+                        startBannerSlideShow(arrangedList);
                     }
 
                     return false;

@@ -89,10 +89,7 @@ public class HomeFragment extends Fragment {
 
         List<SliderModel> sliderModelList = new ArrayList<SliderModel>();
 
-        sliderModelList.add(new SliderModel(R.drawable.ic_sign_out));
-        sliderModelList.add(new SliderModel(R.drawable.ic_mall));
         sliderModelList.add(new SliderModel(R.drawable.banner));
-
         sliderModelList.add(new SliderModel(R.drawable.ic_logo));
         sliderModelList.add(new SliderModel(R.drawable.ic_account));
         sliderModelList.add(new SliderModel(R.drawable.ic_cart));
@@ -102,10 +99,7 @@ public class HomeFragment extends Fragment {
         sliderModelList.add(new SliderModel(R.drawable.ic_profile));
         sliderModelList.add(new SliderModel(R.drawable.ic_rewards));
         sliderModelList.add(new SliderModel(R.drawable.ic_sign_out));
-
         sliderModelList.add(new SliderModel(R.drawable.ic_mall));
-        sliderModelList.add(new SliderModel(R.drawable.banner));
-        sliderModelList.add(new SliderModel(R.drawable.ic_logo));
 
         ///////Banner Slider
 
