@@ -86,7 +86,7 @@
     <string name="price_2_items">Price (2 items)</string>
     <string name="delivery">Delivery</string>
     <string name="free">Free</string>
-    <string name="rs_9999">Rs.9999-</string>
+    <string name="rs_9999">Rs.9999/-</string>
     <string name="you_saved_rs_100_on_this_order">You saved Rs.1/- on this order</string>
     <string name="pixel_2">Pixel 2</string>
     <string name="dot">Dot</string>
@@ -142,4 +142,16 @@
     <string name="check_mark">Check Mark</string>
     <string name="edit">Edit</string>
     <string name="remove">Remove</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="just_few_steps_away_from_your_cart">Just few steps away from your cart!</string>
+    <string name="cart_dialouge">Cart Dialouge</string>
+    <string name="quantity">Quantity</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">Ok</string>
+    <string name="your_coupen">Your Coupen</string>
+    <string name="options">Options</string>
+    <string name="original_price">Original Price</string>
+    <string name="price_after_coupen_redemption">Price after coupen redemption</string>
+    <string name="make_sure_to_apply_the_coupen_in_your_cart">* Make sure to apply the coupen in your cart.</string>
 </resources>
