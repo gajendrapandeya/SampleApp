@@ -1,5 +1,6 @@
 package com.codermonkeys.sampleapp.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.codermonkeys.sampleapp.ProductDetailActivity;
 import com.codermonkeys.sampleapp.R;
 import com.codermonkeys.sampleapp.models.HorizontalProductScrollModel;
@@ -34,7 +37,7 @@ public class HorizontalProductScrollAdapter extends RecyclerView.Adapter<Horizon
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        int resource = horizontalProductScrollModelList.get(position).getProductImage();
+        String resource = horizontalProductScrollModelList.get(position).getProductImage();
         String title = horizontalProductScrollModelList.get(position).getProductTitle();
         String description = horizontalProductScrollModelList.get(position).getProductDescription();
         String price = horizontalProductScrollModelList.get(position).getProductPrice();
@@ -79,8 +82,9 @@ public class HorizontalProductScrollAdapter extends RecyclerView.Adapter<Horizon
             });
         }
 
-        private void setProductImage(int resource) {
-            productImage.setImageResource(resource);
+        private void setProductImage(String resource) {
+
+            Glide.with(itemView.getContext()).load(resource).apply(new RequestOptions().placeholder(R.drawable.a2)).into(productImage);
         }
 
         private void setProductTitle(String title) {
@@ -91,8 +95,9 @@ public class HorizontalProductScrollAdapter extends RecyclerView.Adapter<Horizon
             productDescription.setText(description);
         }
 
+        @SuppressLint("SetTextI18n")
         private void setProductPrice(String price) {
-            productPrice.setText(price);
+            productPrice.setText("Rs."+price+"/-");
         }
     }
 

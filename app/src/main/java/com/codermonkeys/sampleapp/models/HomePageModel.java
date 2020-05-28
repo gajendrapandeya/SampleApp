@@ -10,6 +10,7 @@ public class HomePageModel {
     public static final int GRID_PRODUCT_VIEW = 3;
 
     private int type;
+    private String backGroundColor;
 
     ///////Banner Slider
     private List<SliderModel> sliderModelList;
@@ -41,7 +42,6 @@ public class HomePageModel {
     /////String Ad Banner
 
     private String resource;
-    private String backGroundColor;
 
     public HomePageModel(int type, String resource, String backGroundColor) {
         this.type = type;
@@ -72,9 +72,10 @@ public class HomePageModel {
     private String title;
     private List<HorizontalProductScrollModel> horizontalProductScrollModelList;
 
-    public HomePageModel(int type, String title, List<HorizontalProductScrollModel> horizontalProductScrollModelList) {
+    public HomePageModel(int type, String title, String backGroundColor, List<HorizontalProductScrollModel> horizontalProductScrollModelList) {
         this.type = type;
         this.title = title;
+        this.backGroundColor = backGroundColor;
         this.horizontalProductScrollModelList = horizontalProductScrollModelList;
     }
 

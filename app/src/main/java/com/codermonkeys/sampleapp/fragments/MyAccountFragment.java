@@ -9,7 +9,6 @@ import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 
-import com.codermonkeys.sampleapp.DeliveryActivity;
 import com.codermonkeys.sampleapp.MyAddressActivity;
 import com.codermonkeys.sampleapp.R;
 
@@ -18,11 +17,10 @@ import com.codermonkeys.sampleapp.R;
  */
 public class MyAccountFragment extends Fragment {
 
-    //Ui Component's
-    private Button viewAllAddressBtn;
-
     //var's
     public static final int MANAGE_ADDRESS = 1;
+    //Ui Component's
+    private Button viewAllAddressBtn;
 
     public MyAccountFragment() {
         // Required empty public constructor

@@ -169,16 +169,16 @@ public class SignUpFragment extends Fragment {
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               checkEmailAndPassword();
+                checkEmailAndPassword();
             }
         });
 
         closeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Intent mainIntent = new Intent(getActivity(), MainActivity.class);
-               startActivity(mainIntent);
-               requireActivity().finish();
+                Intent mainIntent = new Intent(getActivity(), MainActivity.class);
+                startActivity(mainIntent);
+                requireActivity().finish();
             }
         });
     }
@@ -188,9 +188,9 @@ public class SignUpFragment extends Fragment {
         Drawable customErrorIcon = getResources().getDrawable(R.drawable.custom_error_icon);
         customErrorIcon.setBounds(0, 0, customErrorIcon.getIntrinsicWidth(), customErrorIcon.getIntrinsicHeight());
 
-        if(email.getText().toString().matches(emailPattern)) {
+        if (email.getText().toString().matches(emailPattern)) {
 
-            if(password.getText().toString().contentEquals(confirmPassword.getText().toString())) {
+            if (password.getText().toString().contentEquals(confirmPassword.getText().toString())) {
 
                 progressBar.setVisibility(View.VISIBLE);
                 signUpBtn.setEnabled(false);
@@ -202,9 +202,9 @@ public class SignUpFragment extends Fragment {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
 
-                                if(task.isSuccessful()) {
+                                if (task.isSuccessful()) {
 
-                                    Map<Object, String > userData = new HashMap<>();
+                                    Map<Object, String> userData = new HashMap<>();
                                     userData.put("fullname", fullName.getText().toString());
 
                                     firebaseFirestore.collection("USERS").add(userData).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
@@ -212,7 +212,7 @@ public class SignUpFragment extends Fragment {
                                         @Override
                                         public void onComplete(@NonNull Task<DocumentReference> task) {
 
-                                            if(task.isSuccessful()) {
+                                            if (task.isSuccessful()) {
 
                                                 Intent mainIntent = new Intent(getActivity(), MainActivity.class);
                                                 startActivity(mainIntent);
@@ -223,7 +223,6 @@ public class SignUpFragment extends Fragment {
                                             }
                                         }
                                     });
-
 
 
                                 } else {

@@ -1,14 +1,13 @@
 package com.codermonkeys.sampleapp.fragments;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.codermonkeys.sampleapp.R;
 import com.codermonkeys.sampleapp.adapters.ProductSpecificationAdapter;
@@ -45,22 +44,22 @@ public class ProductSpecificationFragment extends Fragment {
 
         List<ProductSpecificationModel> productSpecificationModelList = new ArrayList<>();
         productSpecificationModelList.add(new ProductSpecificationModel(0, "General"));
-        productSpecificationModelList.add(new ProductSpecificationModel(1,"Ram", "8GB"));
+        productSpecificationModelList.add(new ProductSpecificationModel(1, "Ram", "8GB"));
         productSpecificationModelList.add(new ProductSpecificationModel(1, "Camera", "32MP"));
         productSpecificationModelList.add(new ProductSpecificationModel(1, "Storage", "64GB"));
         productSpecificationModelList.add(new ProductSpecificationModel(1, "Processor", "SD-625"));
         productSpecificationModelList.add(new ProductSpecificationModel(0, "Others"));
-        productSpecificationModelList.add(new ProductSpecificationModel(1,"Ram", "8GB"));
+        productSpecificationModelList.add(new ProductSpecificationModel(1, "Ram", "8GB"));
         productSpecificationModelList.add(new ProductSpecificationModel(1, "Camera", "32MP"));
         productSpecificationModelList.add(new ProductSpecificationModel(1, "Storage", "64GB"));
         productSpecificationModelList.add(new ProductSpecificationModel(1, "Processor", "SD-625"));
         productSpecificationModelList.add(new ProductSpecificationModel(0, "General"));
-        productSpecificationModelList.add(new ProductSpecificationModel(1,"Ram", "8GB"));
+        productSpecificationModelList.add(new ProductSpecificationModel(1, "Ram", "8GB"));
         productSpecificationModelList.add(new ProductSpecificationModel(1, "Camera", "32MP"));
         productSpecificationModelList.add(new ProductSpecificationModel(1, "Storage", "64GB"));
         productSpecificationModelList.add(new ProductSpecificationModel(1, "Processor", "SD-625"));
         productSpecificationModelList.add(new ProductSpecificationModel(0, "Others"));
-        productSpecificationModelList.add(new ProductSpecificationModel(1,"Ram", "8GB"));
+        productSpecificationModelList.add(new ProductSpecificationModel(1, "Ram", "8GB"));
         productSpecificationModelList.add(new ProductSpecificationModel(1, "Camera", "32MP"));
         productSpecificationModelList.add(new ProductSpecificationModel(1, "Storage", "64GB"));
         productSpecificationModelList.add(new ProductSpecificationModel(1, "Processor", "SD-625"));
