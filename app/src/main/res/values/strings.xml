@@ -171,4 +171,5 @@
     <string name="recovery_email_sent_successfully_check_your_inbox">Recovery email sent successfully! Check your inbox</string>
     <string name="not_signed_in">Not Signed In</string>
     <string name="email_address">Email Address</string>
+    <string name="no_internet">No Internet</string>
 </resources>

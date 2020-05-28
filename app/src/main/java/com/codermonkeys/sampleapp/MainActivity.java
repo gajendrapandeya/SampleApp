@@ -2,12 +2,14 @@ package com.codermonkeys.sampleapp;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Menu;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
@@ -15,6 +17,16 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.bumptech.glide.Glide;
 import com.codermonkeys.sampleapp.fragments.HomeFragment;
 import com.codermonkeys.sampleapp.fragments.MyAccountFragment;
 import com.codermonkeys.sampleapp.fragments.MyCartFragment;
@@ -22,15 +34,6 @@ import com.codermonkeys.sampleapp.fragments.MyOrdersFragment;
 import com.codermonkeys.sampleapp.fragments.MyRewardsFragment;
 import com.codermonkeys.sampleapp.fragments.MyWishListFragment;
 import com.google.android.material.navigation.NavigationView;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.core.view.GravityCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import java.util.Objects;
 
@@ -42,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawer;
     private FrameLayout frameLayout;
     private Toolbar toolbar;
+
 
     //var's
     private NavigationView navigationView;
@@ -68,8 +72,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
-        frameLayout = findViewById(R.id.main_frame_layout);
-
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -77,8 +79,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("My Mall");
 
-        if (showCart) {
+        frameLayout = findViewById(R.id.main_frame_layout);
 
+
+
+        if (showCart) {
             drawer.setDrawerLockMode(1);
             Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
             gotoFragment("My Cart", new MyCartFragment(), -2);
@@ -88,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             toggle.syncState();
             setFragment(new HomeFragment(), HOME_FRAGMENT);
         }
+
 
     }
 
