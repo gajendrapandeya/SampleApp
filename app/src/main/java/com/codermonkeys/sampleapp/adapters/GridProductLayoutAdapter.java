@@ -41,7 +41,7 @@ public class GridProductLayoutAdapter extends BaseAdapter {
         return 0;
     }
 
-    @SuppressLint("InflateParams")
+    @SuppressLint({"InflateParams", "SetTextI18n"})
     @Override
     public View getView(int position, View convertView, final ViewGroup parent) {
         View view;
@@ -67,7 +67,7 @@ public class GridProductLayoutAdapter extends BaseAdapter {
             Glide.with(parent.getContext()).load(horizontalProductScrollModelList.get(position).getProductImage()).apply(new RequestOptions().placeholder(R.drawable.a2)).into(productImage);
             productTitle.setText(horizontalProductScrollModelList.get(position).getProductTitle());
             productDescription.setText(horizontalProductScrollModelList.get(position).getProductDescription());
-            productPrice.setText(horizontalProductScrollModelList.get(position).getProductPrice());
+            productPrice.setText("Rs." + horizontalProductScrollModelList.get(position).getProductPrice()+"/-");
         } else {
 
             view = convertView;
