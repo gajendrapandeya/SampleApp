@@ -9,9 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,24 +17,16 @@ import com.bumptech.glide.Glide;
 import com.codermonkeys.sampleapp.R;
 import com.codermonkeys.sampleapp.adapters.CategoryAdapter;
 import com.codermonkeys.sampleapp.adapters.HomePageAdapter;
-import com.codermonkeys.sampleapp.models.CategoryModel;
 import com.codermonkeys.sampleapp.models.HomePageModel;
-import com.codermonkeys.sampleapp.models.HorizontalProductScrollModel;
-import com.codermonkeys.sampleapp.models.SliderModel;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
+
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 import static com.codermonkeys.sampleapp.resources.DBqueries.categoryModelList;
-import static com.codermonkeys.sampleapp.resources.DBqueries.firebaseFirestore;
-import static com.codermonkeys.sampleapp.resources.DBqueries.homePageModelList;
+import static com.codermonkeys.sampleapp.resources.DBqueries.lists;
 import static com.codermonkeys.sampleapp.resources.DBqueries.loadCategories;
 import static com.codermonkeys.sampleapp.resources.DBqueries.loadFragmentData;
+import static com.codermonkeys.sampleapp.resources.DBqueries.loadedCategoriesName;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -99,16 +88,18 @@ public class HomeFragment extends Fragment {
             LinearLayoutManager testingLayoutManager = new LinearLayoutManager(getContext());
             testingLayoutManager.setOrientation(RecyclerView.VERTICAL);
             homePageRecyclerView.setLayoutManager(testingLayoutManager);
-            adapter = new HomePageAdapter(homePageModelList);
-            homePageRecyclerView.setAdapter(adapter);
 
-
-            if(homePageModelList.size() == 0) {
-                loadFragmentData(adapter, getContext());
+            if(lists.size() == 0) {
+                loadedCategoriesName.add("HOME");
+                lists.add(new ArrayList<HomePageModel>());
+                adapter = new HomePageAdapter(lists.get(0));
+                loadFragmentData(adapter, getContext(), 0, "Home");
             } else {
-                categoryAdapter.notifyDataSetChanged();
+                adapter = new HomePageAdapter(lists.get(0));
+                adapter.notifyDataSetChanged();
             }
 
+            homePageRecyclerView.setAdapter(adapter);
 
             ///////////////MultiLay RecyclerView
 

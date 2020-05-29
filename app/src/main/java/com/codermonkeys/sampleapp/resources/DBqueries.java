@@ -28,8 +28,15 @@ public class DBqueries {
     private static final String TAG = "DBqueries";
 
     public static FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
+
+    //list for categories shown in home fragment
     public static List<CategoryModel> categoryModelList = new ArrayList<>();
-    public static List<HomePageModel> homePageModelList = new ArrayList<>();
+
+    //list for list of categories
+    public static List<List<HomePageModel>> lists = new ArrayList<>();
+
+    //list for storing name of all the list that are already accessed from firebase
+    public static List<String> loadedCategoriesName = new ArrayList<>();
 
     public static void loadCategories(final CategoryAdapter categoryAdapter, final Context context) {
 
@@ -53,10 +60,10 @@ public class DBqueries {
 
     }
 
-    public static void loadFragmentData(final HomePageAdapter adapter, final Context context) {
+    public static void loadFragmentData(final HomePageAdapter adapter, final Context context, final int index, String categoryName) {
 
         firebaseFirestore.collection("CATEGORIES")
-                .document("HOME")
+                .document(categoryName.toUpperCase())
                 .collection("TOP_DEALS")
                 .orderBy("index")
                 .get()
@@ -77,12 +84,12 @@ public class DBqueries {
                                         sliderModelList.add(new SliderModel(Objects.requireNonNull(documentSnapshot.get("banner_" + x)).toString(),
                                                 Objects.requireNonNull(documentSnapshot.get("banner_" + x + "_background")).toString()));
                                     }
-                                    homePageModelList.add(new HomePageModel(0, sliderModelList));
+                                    lists.get(index).add(new HomePageModel(0, sliderModelList));
 
 
                                 } else if (Objects.requireNonNull((long) documentSnapshot.get("view_type")) == 1) {
                                     //if view_type is 1, then we should set strip ad
-                                    homePageModelList.add(new HomePageModel(1, Objects.requireNonNull(documentSnapshot.get("strip_ad_banner")).toString(),
+                                    lists.get(index).add(new HomePageModel(1, Objects.requireNonNull(documentSnapshot.get("strip_ad_banner")).toString(),
                                             Objects.requireNonNull(documentSnapshot.get("background")).toString()));
 
 
@@ -117,7 +124,7 @@ public class DBqueries {
                                         Log.d(TAG, "onComplete: " + "succesful execution");
                                     }
 
-                                        homePageModelList.add(new HomePageModel(2
+                                    lists.get(index).add(new HomePageModel(2
                                                 , Objects.requireNonNull(documentSnapshot.get("layout_title")).toString()
                                                 , Objects.requireNonNull(documentSnapshot.get("layout_background")).toString(),
                                                 horizontalProductScrollModelList, viewAllProductsList));
@@ -135,7 +142,7 @@ public class DBqueries {
                                                 , Objects.requireNonNull(documentSnapshot.get("product_subtitle_" + x)).toString()
                                                 , Objects.requireNonNull(documentSnapshot.get("product_price_" + x)).toString()));
                                     }
-                                    homePageModelList.add(new HomePageModel(3
+                                    lists.get(index).add(new HomePageModel(3
                                             , Objects.requireNonNull(documentSnapshot.get("layout_title")).toString()
                                             , Objects.requireNonNull(documentSnapshot.get("layout_background")).toString(),
                                             gridLayoutModelList));

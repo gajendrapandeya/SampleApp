@@ -14,15 +14,23 @@ import com.codermonkeys.sampleapp.adapters.HomePageAdapter;
 import com.codermonkeys.sampleapp.models.HomePageModel;
 import com.codermonkeys.sampleapp.models.HorizontalProductScrollModel;
 import com.codermonkeys.sampleapp.models.SliderModel;
+import com.codermonkeys.sampleapp.resources.DBqueries;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import static com.codermonkeys.sampleapp.resources.DBqueries.lists;
+import static com.codermonkeys.sampleapp.resources.DBqueries.loadFragmentData;
+import static com.codermonkeys.sampleapp.resources.DBqueries.loadedCategoriesName;
+
 public class CategoryActivity extends AppCompatActivity {
 
     //Widget Component's
     private RecyclerView categoryRecyclerView;
+
+    //var's
+    private  HomePageAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,8 +50,28 @@ public class CategoryActivity extends AppCompatActivity {
         LinearLayoutManager testingLayoutManager = new LinearLayoutManager(this);
         testingLayoutManager.setOrientation(RecyclerView.VERTICAL);
         categoryRecyclerView.setLayoutManager(testingLayoutManager);
-        List<HomePageModel> homePageModelList = new ArrayList<>();
-        HomePageAdapter adapter = new HomePageAdapter(homePageModelList);
+
+        int listPosition = 0;
+        for(int x = 0; x < loadedCategoriesName.size(); x++) {
+
+            assert title != null;
+            if(loadedCategoriesName.get(x).equals(title.toUpperCase())) {
+                listPosition = x;
+            }
+        }
+
+        if(listPosition == 0) {
+
+            loadedCategoriesName.add("HOME");
+            lists.add(new ArrayList<HomePageModel>());
+            adapter = new HomePageAdapter(lists.get(loadedCategoriesName.size() - 1));
+            loadFragmentData(adapter, this, loadedCategoriesName.size() - 1, title);
+
+        } else {
+
+            adapter = new HomePageAdapter(lists.get(listPosition));
+        }
+
         categoryRecyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         ///////////////MultiLay RecyclerView
