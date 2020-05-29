@@ -105,23 +105,23 @@ public class DBqueries {
                                                 , Objects.requireNonNull(documentSnapshot.get("product_price_" + x)).toString()));
 
                                         //if user click view all btn then this data is displayed in vertical recyclerView
-                                       viewAllProductsList.add(new WishListModel(Objects.requireNonNull(documentSnapshot.get("product_image_" + x)).toString()
-                                               ,Objects.requireNonNull(documentSnapshot.get("product_full_title_" + x)).toString()
-                                               ,Objects.requireNonNull((long)documentSnapshot.get("free_coupens_" + x))
-                                               ,Objects.requireNonNull(documentSnapshot.get("average_ratings_" + x)).toString()
-                                               ,Objects.requireNonNull((long)documentSnapshot.get("total_ratings_" + x))
-                                               ,Objects.requireNonNull(documentSnapshot.get("product_price_" + x)).toString()
-                                               ,Objects.requireNonNull(documentSnapshot.get("cutted_price_" + x)).toString()
-                                               ,Objects.requireNonNull((boolean)documentSnapshot.get("COD_" + x))));
+                                     viewAllProductsList.add(new WishListModel(Objects.requireNonNull(documentSnapshot.get("product_image_" + x)).toString()
+                                     , Objects.requireNonNull(documentSnapshot.get("product_full_title_" + x)).toString()
+                                     ,(long)documentSnapshot.get("free_coupens_"+ x)
+                                     , Objects.requireNonNull(documentSnapshot.get("average_ratings_" + x)).toString()
+                                     ,(long)documentSnapshot.get("total_ratings_" + x)
+                                     , Objects.requireNonNull(documentSnapshot.get("product_price_" + x)).toString()
+                                     , Objects.requireNonNull(documentSnapshot.get("cutted_price_" + x)).toString()
+                                     ,(boolean)documentSnapshot.get("COD_" + x)));
+
+                                        Log.d(TAG, "onComplete: " + "succesful execution");
                                     }
-                                    try {
+
                                         homePageModelList.add(new HomePageModel(2
                                                 , Objects.requireNonNull(documentSnapshot.get("layout_title")).toString()
                                                 , Objects.requireNonNull(documentSnapshot.get("layout_background")).toString(),
                                                 horizontalProductScrollModelList, viewAllProductsList));
-                                    } catch (Exception e) {
-                                        Log.d(TAG, "onComplete: "+ e.getMessage());
-                                    }
+
 
                                 } else if (Objects.requireNonNull((long) documentSnapshot.get("view_type")) == 3) {
                                     //if view_type is 3, then we should set grid view

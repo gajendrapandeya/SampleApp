@@ -108,9 +108,9 @@ public class WishListAdapter  extends RecyclerView.Adapter<WishListAdapter.ViewH
                 freeCoupens.setVisibility(View.INVISIBLE);
             }
             rating.setText(averageRate);
-            totalRating.setText(totalRatingNo + "(ratings)");
-            productPrice.setText(price);
-            cuttedPrice.setText(cuttedPriceValue);
+            totalRating.setText("(" +totalRatingNo + ")ratings");
+            productPrice.setText("Rs." +price+"/-");
+            cuttedPrice.setText("Rs." +cuttedPriceValue+"/-");
 
             if(COD) {
                 paymentMethod.setVisibility(View.VISIBLE);
