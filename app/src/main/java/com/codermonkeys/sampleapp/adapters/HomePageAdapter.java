@@ -29,6 +29,7 @@ import com.codermonkeys.sampleapp.ViewAllActivity;
 import com.codermonkeys.sampleapp.models.HomePageModel;
 import com.codermonkeys.sampleapp.models.HorizontalProductScrollModel;
 import com.codermonkeys.sampleapp.models.SliderModel;
+import com.codermonkeys.sampleapp.models.WishListModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -108,8 +109,9 @@ public class HomePageAdapter extends RecyclerView.Adapter {
             case HomePageModel.HORIZONTAL_PRODUCT_VIEW:
                 String layoutColor = homePageModelList.get(position).getBackGroundColor();
                 String horizontalLayoutTitle = homePageModelList.get(position).getTitle();
+                List<WishListModel> viewAllProductList = homePageModelList.get(position).getViewAllProductList();
                 List<HorizontalProductScrollModel> horizontalProductScrollModelList = homePageModelList.get(position).getHorizontalProductScrollModelList();
-                ((HorizontalProductViewHolder) holder).setHorizontalProductLayout(horizontalProductScrollModelList, horizontalLayoutTitle, layoutColor);
+                ((HorizontalProductViewHolder) holder).setHorizontalProductLayout(horizontalProductScrollModelList, horizontalLayoutTitle, layoutColor, viewAllProductList);
                 break;
 
                 case HomePageModel.GRID_PRODUCT_VIEW:
@@ -288,7 +290,7 @@ public class HomePageAdapter extends RecyclerView.Adapter {
 
         }
 
-        private void setHorizontalProductLayout(List<HorizontalProductScrollModel> horizontalProductScrollModelList, String title, String color) {
+        private void setHorizontalProductLayout(List<HorizontalProductScrollModel> horizontalProductScrollModelList, final String title, String color, final List<WishListModel> viewAllProductList) {
 
             container.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(color)));
 
@@ -299,8 +301,10 @@ public class HomePageAdapter extends RecyclerView.Adapter {
                 horizontalLayoutViewAllButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        ViewAllActivity.wishListModelList = viewAllProductList;
                         Intent viewAllIntent = new Intent(itemView.getContext(), ViewAllActivity.class);
                         viewAllIntent.putExtra("layout_code", 0);
+                        viewAllIntent.putExtra("title", title);
                         itemView.getContext().startActivity(viewAllIntent);
                     }
                 });

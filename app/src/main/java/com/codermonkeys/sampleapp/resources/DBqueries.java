@@ -1,6 +1,7 @@
 package com.codermonkeys.sampleapp.resources;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,7 @@ import com.codermonkeys.sampleapp.models.CategoryModel;
 import com.codermonkeys.sampleapp.models.HomePageModel;
 import com.codermonkeys.sampleapp.models.HorizontalProductScrollModel;
 import com.codermonkeys.sampleapp.models.SliderModel;
+import com.codermonkeys.sampleapp.models.WishListModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -22,6 +24,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class DBqueries {
+
+    private static final String TAG = "DBqueries";
 
     public static FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
     public static List<CategoryModel> categoryModelList = new ArrayList<>();
@@ -83,20 +87,41 @@ public class DBqueries {
 
 
                                 } else if (Objects.requireNonNull((long) documentSnapshot.get("view_type")) == 2) {
+
+                                    //if view all btn is clicked then, user is navigated to new fragment containing recyclerview of all the available items
+                                    List<WishListModel> viewAllProductsList = new ArrayList<>();
+
+
                                     //if view_type is 2, then we should set horizontal recycler view
                                     List<HorizontalProductScrollModel> horizontalProductScrollModelList = new ArrayList<>();
                                     long no_of_products = (long) documentSnapshot.get("no_of_products");
                                     for (long x = 1; x < no_of_products + 1; x++) {
+
+                                        //this data is displayed in home fragment in a horizontal recyclerView
                                         horizontalProductScrollModelList.add(new HorizontalProductScrollModel(Objects.requireNonNull(documentSnapshot.get("product_ID_" + x)).toString()
                                                 , Objects.requireNonNull(documentSnapshot.get("product_image_" + x)).toString()
                                                 , Objects.requireNonNull(documentSnapshot.get("product_title_" + x)).toString()
                                                 , Objects.requireNonNull(documentSnapshot.get("product_subtitle_" + x)).toString()
                                                 , Objects.requireNonNull(documentSnapshot.get("product_price_" + x)).toString()));
+
+                                        //if user click view all btn then this data is displayed in vertical recyclerView
+                                       viewAllProductsList.add(new WishListModel(Objects.requireNonNull(documentSnapshot.get("product_image_" + x)).toString()
+                                               ,Objects.requireNonNull(documentSnapshot.get("product_full_title_" + x)).toString()
+                                               ,Objects.requireNonNull((long)documentSnapshot.get("free_coupens_" + x))
+                                               ,Objects.requireNonNull(documentSnapshot.get("average_ratings_" + x)).toString()
+                                               ,Objects.requireNonNull((long)documentSnapshot.get("total_ratings_" + x))
+                                               ,Objects.requireNonNull(documentSnapshot.get("product_price_" + x)).toString()
+                                               ,Objects.requireNonNull(documentSnapshot.get("cutted_price_" + x)).toString()
+                                               ,Objects.requireNonNull((boolean)documentSnapshot.get("COD_" + x))));
                                     }
-                                    homePageModelList.add(new HomePageModel(2
-                                            , Objects.requireNonNull(documentSnapshot.get("layout_title")).toString()
-                                            , Objects.requireNonNull(documentSnapshot.get("layout_background")).toString(),
-                                            horizontalProductScrollModelList));
+                                    try {
+                                        homePageModelList.add(new HomePageModel(2
+                                                , Objects.requireNonNull(documentSnapshot.get("layout_title")).toString()
+                                                , Objects.requireNonNull(documentSnapshot.get("layout_background")).toString(),
+                                                horizontalProductScrollModelList, viewAllProductsList));
+                                    } catch (Exception e) {
+                                        Log.d(TAG, "onComplete: "+ e.getMessage());
+                                    }
 
                                 } else if (Objects.requireNonNull((long) documentSnapshot.get("view_type")) == 3) {
                                     //if view_type is 3, then we should set grid view

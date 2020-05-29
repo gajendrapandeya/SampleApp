@@ -28,6 +28,7 @@ public class ViewAllActivity extends AppCompatActivity {
 
     //var's
     public static List<HorizontalProductScrollModel> horizontalProductScrollModelList;
+    public static List<WishListModel> wishListModelList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,17 +52,7 @@ public class ViewAllActivity extends AppCompatActivity {
             layoutManager.setOrientation(RecyclerView.VERTICAL);
             recyclerView.setLayoutManager(layoutManager);
 
-            List<WishListModel> wishListModelList = new ArrayList<>();
-            wishListModelList.add(new WishListModel(R.drawable.product_image, "Pixel 2a", 2, "3", 45, "RS.5,999/-", "Rs.6,999/-", "Cash on delivery"));
-            wishListModelList.add(new WishListModel(R.drawable.a2, "Mi A2 lite", 0, "4", 78, "RS.7,999/-", "Rs.9,999/-", "Cash on delivery"));
-            wishListModelList.add(new WishListModel(R.drawable.product_image, "Pixel 2a", 1, "3", 45, "RS.5,999/-", "Rs.6,999/-", "Cash on delivery"));
-            wishListModelList.add(new WishListModel(R.drawable.product_image, "Pixel 2a", 2, "3", 45, "RS.5,999/-", "Rs.6,999/-", "Cash on delivery"));
-            wishListModelList.add(new WishListModel(R.drawable.product_image, "Pixel 2a", 4, "3", 45, "RS.5,999/-", "Rs.6,999/-", "Cash on delivery"));
-            wishListModelList.add(new WishListModel(R.drawable.product_image, "Pixel 2a", 2, "3", 45, "RS.5,999/-", "Rs.6,999/-", "Cash on delivery"));
-            wishListModelList.add(new WishListModel(R.drawable.a2, "Mi A2 lite", 0, "4", 78, "RS.7,999/-", "Rs.9,999/-", "Cash on delivery"));
-            wishListModelList.add(new WishListModel(R.drawable.product_image, "Pixel 2a", 1, "3", 45, "RS.5,999/-", "Rs.6,999/-", "Cash on delivery"));
-            wishListModelList.add(new WishListModel(R.drawable.product_image, "Pixel 2a", 2, "3", 45, "RS.5,999/-", "Rs.6,999/-", "Cash on delivery"));
-            wishListModelList.add(new WishListModel(R.drawable.product_image, "Pixel 2a", 4, "3", 45, "RS.5,999/-", "Rs.6,999/-", "Cash on delivery"));
+
 
 
             WishListAdapter adapter = new WishListAdapter(wishListModelList, false);
